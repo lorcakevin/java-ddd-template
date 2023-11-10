@@ -1,8 +1,6 @@
 package bx.cnsr.corentsu.oscor.orders.domain;
 
 import bx.cnsr.corentsu.oscor.orders.domain.VO.*;
-import bx.cnsr.corentsu.oscor.orders.domain.entity.*;
-import bx.cnsr.corentsu.oscor.orders.domain.entity.Package;
 import lombok.*;
 
 import java.util.List;
@@ -23,6 +21,7 @@ public class OrderAggregate {
 
     public void addPackage(Package pkg) {
         this.packages.add(pkg);
+        order.CreateOrder();
     }
 
 }

@@ -1,7 +1,7 @@
 package bx.cnsr.corentsu.oscor.orders.application.services;
 
-import bx.cnsr.corentsu.oscor.orders.domain.entity.Order;
-import bx.cnsr.corentsu.oscor.orders.infraestructure.repository.OrdersRORepository;
+import bx.cnsr.corentsu.oscor.orders.domain.Order;
+import bx.cnsr.corentsu.oscor.orders.infrastructure.repository.OrdersRORepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class OrderService implements IOrderService {
