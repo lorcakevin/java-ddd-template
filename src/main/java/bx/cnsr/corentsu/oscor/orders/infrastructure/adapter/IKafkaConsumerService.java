@@ -1,4 +1,4 @@
-package bx.cnsr.corentsu.oscor.orders.application.services;
+package bx.cnsr.corentsu.oscor.orders.infrastructure.adapter;
 
 import bluex.cnsr.cubicacion.model.DataRecord;
 import org.springframework.kafka.support.Acknowledgment;
