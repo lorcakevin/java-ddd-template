@@ -21,7 +21,11 @@ public class OrderAggregate {
 
     public void addPackage(Package pkg) {
         this.packages.add(pkg);
-        order.CreateOrder();
+    }
+
+    public void calculateWeight() {
+        //Uso de método protegido
+        order.calculateWeight();
     }
 
 }

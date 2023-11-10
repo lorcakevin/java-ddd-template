@@ -41,4 +41,11 @@ public class Order {
     private List<Package> packages;
     private TaxDocument taxDocument;
 
+    protected void calculateWeight() {
+        /*
+            Método con nivel de acceso protegido
+            para que sólo se pueda acceder a este desde
+            la clase de agregado
+         */
+    }
 }
