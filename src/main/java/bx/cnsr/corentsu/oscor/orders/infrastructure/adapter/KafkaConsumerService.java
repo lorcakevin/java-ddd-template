@@ -1,14 +1,7 @@
 package bx.cnsr.corentsu.oscor.orders.infrastructure.adapter;
 
 
-import bluex.cnsr.cubicacion.exception.ApplicationException;
-import bluex.cnsr.cubicacion.exception.BusinessException;
-import bluex.cnsr.cubicacion.exception.ExceptionCodes;
-import bluex.cnsr.cubicacion.model.DataRecord;
-import bluex.cnsr.cubicacion.model.MetadataDetail;
-import bluex.cnsr.cubicacion.model.mongo.Part;
-import bluex.cnsr.cubicacion.model.oracle.TableDetail;
-import bluex.cnsr.cubicacion.service.*;
+import bx.cnsr.corentsu.oscor.orders.infrastructure.adapter.entity.DataRecord;
 import org.apache.kafka.common.errors.SerializationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,10 +33,6 @@ public class KafkaConsumerService implements IKafkaConsumerService {
 
     @Autowired
     private KafkaListenerEndpointRegistry registry;
-    @Autowired
-    CubicacionService cubicacionService;
-    @Autowired
-    PartService partService;
 
     @KafkaListener(topics = "#{'${app.kafka.consumer.topic}'.split(',')}",
             errorHandler = "errorHandler")
@@ -55,23 +44,11 @@ public class KafkaConsumerService implements IKafkaConsumerService {
         logger.info("bx-fail-cause: {}", retryCause);
         logger.info("bx-schedule-time: {}", scheduleTime);
 
-        TableDetail data = message.getData();
-        MetadataDetail metadata = message.getMetadata();
         try {
-            processMessageDelay(scheduleTime);
-            if ((data != null && metadata != null) && metadata.getOperation().equals("insert")) {
-                if(data.getOrigen() > allowedOrigin) {
 
-                    logger.info("[Kafka Listener] [{}] Inicia proceso de cubicación", data.getBarcode());
-                    Optional<Part> part = partService.getPartFromData(data);
+            //Logica de validación del mensaje y llamada a
+            //servicios de aplicación (casos de uso)
 
-                    part.ifPresent(value -> cubicacionService.processPart(value));
-                } else {
-                    logger.warn("[Kafka Listener] La configuración actual del consumer no permite cubicar el mensaje con el siguiente origen: {}", data.getOrigen());
-                }
-            } else {
-                logger.info("[Kafka Listener] Mensaje no válido, no se procesará la orden: {}", message);
-            }
         } catch (BusinessException | ApplicationException |
                  DataAccessException | SerializationException |
                  MessageConversionException ex) {

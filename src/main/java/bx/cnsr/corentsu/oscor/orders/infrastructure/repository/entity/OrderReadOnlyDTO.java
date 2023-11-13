@@ -1,6 +1,9 @@
 package bx.cnsr.corentsu.oscor.orders.infrastructure.repository.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.index.IndexDirection;
@@ -9,11 +12,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Builder
 @Document(collection = "orders-readonly")
-public class OrderReadOnly {
+public class OrderReadOnlyDTO {
 
     @BsonId
     @Indexed(name = "_id_", direction = IndexDirection.ASCENDING, unique = true)
@@ -38,13 +40,13 @@ public class OrderReadOnly {
     private double weight;
     private double volume;
     private double declaredValue;
-    private Seller seller;
-    private Buyer buyer;
-    private Cod cod;
-    private Dd dd;
-    private Insurance insurance;
-    private Shipping shipping;
-    private List<Package> packages;
-    private TaxDocument taxDocument;
+    private SellerDTO seller;
+    private BuyerDTO buyer;
+    private CodDTO cod;
+    private DdDTO dd;
+    private InsuranceDTO insurance;
+    private ShippingDTO shipping;
+    private List<PackageDTO> packages;
+    private TaxDocumentDTO taxDocument;
 }
 

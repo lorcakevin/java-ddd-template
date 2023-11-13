@@ -1,6 +1,6 @@
 package bx.cnsr.corentsu.oscor.orders.infrastructure.adapter;
 
-import bluex.cnsr.cubicacion.model.DataRecord;
+import bx.cnsr.corentsu.oscor.orders.infrastructure.adapter.entity.DataRecord;
 import org.springframework.kafka.support.Acknowledgment;
 
 public interface IKafkaConsumerService {

@@ -1,4 +1,4 @@
-package bx.cnsr.corentsu.oscor.orders.application.controller;
+package bx.cnsr.corentsu.oscor.orders.infrastructure.controller;
 
 import bx.cnsr.corentsu.oscor.orders.application.services.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;

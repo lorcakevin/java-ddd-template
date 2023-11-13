@@ -1,4 +1,4 @@
-package bx.cnsr.corentsu.oscor.orders.application.services;
+package bx.cnsr.corentsu.oscor.orders.infrastructure.adapter;
 
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;

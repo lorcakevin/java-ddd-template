@@ -1,4 +1,4 @@
-package bx.cnsr.corentsu.oscor.orders.application.services;
+package bx.cnsr.corentsu.oscor.orders.infrastructure.adapter;
 
 public interface IKafkaProducerService {
     void sendRetry(String message, String retryCause);
