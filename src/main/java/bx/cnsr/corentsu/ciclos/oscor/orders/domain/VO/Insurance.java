@@ -1,0 +1,14 @@
+package bx.cnsr.corentsu.ciclos.oscor.orders.domain.VO;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Insurance {
+
+    private String invoiceNumber;
+    private double amount;
+}
